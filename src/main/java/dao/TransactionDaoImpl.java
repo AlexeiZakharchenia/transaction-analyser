@@ -73,7 +73,7 @@ public class TransactionDaoImpl implements TransactionDao {
             throw new CsvParseException("Incorrect amount format");
         }
 
-        String merchant = parameters[3].substring(1);
+        String merchant = parameters[3].trim();
 
         if(merchant == null){
             throw new CsvParseException("Reading empty merchant field");
@@ -82,12 +82,12 @@ public class TransactionDaoImpl implements TransactionDao {
         TransactionType type = null;
 
         try {
-            type = TransactionType.valueOf(parameters[4].replaceAll(" ", ""));
+            type = TransactionType.valueOf(parameters[4].trim());
         }catch (IllegalArgumentException ex){
             throw new CsvParseException("Incorrect type format");
         }
 
-        String relatedTransaction = (parameters.length==6) ? parameters[5] : null;
+        String relatedTransaction = (parameters.length==6) ? parameters[5].trim() : null;
 
         return new Transaction(id, date, cost, merchant, type, relatedTransaction);
 

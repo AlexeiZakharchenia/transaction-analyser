@@ -14,7 +14,7 @@ public class Main {
         Date start = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(startStr);
         Date end =  new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(endStr);
 
-        System.out.println(service.getTotal(start, end, merchant));
-        System.out.println(service.getAverage(start, end, merchant));
+        System.out.println("Total: " + service.getTotal(start, end, merchant));
+        System.out.println("Average: " + service.getAverage(start, end, merchant));
     }
 }
